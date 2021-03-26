@@ -1,19 +1,26 @@
 import React from "react";
-import { FlatList, View, Text } from "react-native";
-import { ListItem } from "react-native-elements";
+import { FlatList, View, Text, Stylesheet } from "react-native";
+import { ListItem , Card} from "react-native-elements";
+
 function PlacesToVisit(props) {
   // console.log(props.placesToVisit);
-  const Item = ({ title, subtitle }) => {
-    return (
-      <View>
-        <Text>{title}</Text>
-        <Text>{subtitle}</Text>
-      </View>
-    );
-  };
+  // const Item = ({ title, subtitle }) => {
+  //   return (
+  //     <View>
+  //       <Text>{title}</Text>
+  //       <Text>{subtitle}</Text>
+  //     </View>
+  //   );
+  // };
   const renderItem = ({ item }) => {
     console.log(item);
-    return <Item title={item.name} subtitle={item.description} />;
+    return <ListItem
+    title={item.name} 
+    subtitle={item.description}
+    onPress={() => props.onPress(item.id)}
+    leftAvatar={{source: require('./images/Deception-pass-state-park.jpg')}} 
+    bottomDivider
+    /> ;
   };
   return (
     <FlatList
